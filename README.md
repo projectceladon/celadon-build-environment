@@ -19,7 +19,7 @@ Celadon build environment provides a Dockerfile which contains all the required 
 ### Step 1: Get latest Dockerfile
 To get started, we expect the developer to have synced the latest Dockerfile by cloning the celadon-build-environment github repository.
 
-`git clone https://github.com/iViggyPrabhu/celadon-build-environment`
+`git clone https://github.com/projectceladon/celadon-build-environment`
 
 ### Step 2: Build docker image
 User can now build the docker image. Please note that this might take sometime as the commands tries to install various package dependencies to create the docker image.
