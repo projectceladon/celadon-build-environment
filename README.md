@@ -2,6 +2,11 @@
 
 Celadon Build Environment provides all the necessary packages and environment to download and build Celadon quickly in a containerized environment irrespective of the host operating system of the developer. This allows developers to seemlessly try building Celadon for his/her requirements and get started to develop with very minimal setup time.
 
+## Features
+1. This provides developer a clean build environment that he/she can readily use in their existing environment.
+2. This ensures that developer does not have to make any upgrades or changes in the host environment and hence developer can try celadon building without any changes to host environment.
+3. This provides an easy mechanism to track any changes with respect to celadon build environment and ensures that all developers are using the same envrionment while building celadon. This makes it easier for everyone to debug issues occurring in developer environment. 
+
 ## How To Use
 
 Celadon build environment provides a Dockerfile which contains all the required packages. Hence a developer is expected to build a docker container using the Dockerfile and then use the same for building Celadon. 
