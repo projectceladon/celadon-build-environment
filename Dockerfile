@@ -14,9 +14,8 @@ RUN apt-get update && \
        python3-pystache git-lfs python3 flex clang libncurses5 \
        fakeroot ncurses-dev xz-utils cryptsetup-bin \
        apt-transport-https ca-certificates curl lsb-release \
-       rsync python-pystache python-mako vim python-six
-
-RUN apt-get install -y software-properties-common
+       rsync python-pystache python-mako vim python-six \
+       software-properties-common cpio python3-pip ninja-build 
 
 #install the Docker Engine - Community from the repository:
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -  &&\
@@ -29,7 +28,8 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
     apt-get update && \
     apt-get -y install git-lfs
 
-RUN apt-get install -y cpio
+RUN pip3 install meson==0.59.2
+RUN pip3 install mako>=0.8.0
 
 #creating user celadonuser
 ENV CUSER celadon
