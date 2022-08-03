@@ -30,7 +30,7 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
     apt-get -y install git-lfs
 
 RUN pip3 install meson==0.59.2
-RUN pip3 install mako>=0.8.0
+RUN pip3 install mako==0.8.0
 
 #creating user celadonuser
 ENV CUSER celadon
