@@ -15,7 +15,8 @@ RUN apt-get update && \
        fakeroot ncurses-dev xz-utils cryptsetup-bin \
        apt-transport-https ca-certificates curl lsb-release \
        rsync python-pystache python-mako vim python-six \
-       software-properties-common cpio python3-pip ninja-build 
+       software-properties-common cpio python3-pip ninja-build \
+       cutils cmake pkg-config 
 
 #install the Docker Engine - Community from the repository:
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -  &&\
