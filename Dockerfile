@@ -18,19 +18,13 @@ RUN apt-get update && \
        software-properties-common cpio python3-pip ninja-build \
        cutils cmake pkg-config 
 
-#install the Docker Engine - Community from the repository:
-RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -  &&\
-    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-
-RUN  apt-get update &&\
-     apt-get install -y docker-ce docker-ce-cli containerd.io
 
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
     apt-get update && \
     apt-get -y install git-lfs
 
 RUN pip3 install meson==0.59.2
-RUN pip3 install mako==0.8.0
+RUN pip3 install Mako
 
 #creating user celadonuser
 ENV CUSER celadon
