@@ -51,7 +51,7 @@ Since WORKSPACE will be used by local user inside the container image, it is imp
 
 We have the container image, `celadon-build-environment:latest` and workspace directory `$WORKSPACE` ready. Let us use both of them to start the container.
 
-`docker run -it -v $WORKSPACE:/data/ celadon-build-environment:latest /bin/bash`
+`docker run --privileged -it -v $WORKSPACE:/data/ celadon-build-environment:latest /bin/bash`
 
 This should give you a BASH prompt as `celadon` user. Change directory to `data` which will be the path for WORKSPACE directory inside the container.
 
