@@ -16,7 +16,7 @@ RUN apt-get update && \
        apt-transport-https ca-certificates curl lsb-release \
        rsync python-pystache python-mako vim python-six \
        software-properties-common cpio python3-pip ninja-build \
-       cutils cmake pkg-config 
+       cutils cmake pkg-config xorriso mtools
 
 
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
@@ -24,20 +24,20 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
     apt-get -y install git-lfs
 
 RUN pip3 install meson==0.59.2
-RUN pip3 install Mako
+RUN pip3 install mako==1.1.0
 
 #creating user celadonuser
 ENV CUSER celadon
 ENV CUSERHOME /home/$CUSER
 ENV CGRP celadon
 
-
 RUN groupadd -g 9999 $CGRP && \
 useradd -m -d $CUSERHOME -g $CGRP  $CUSER
 
-ADD ./.gitconfig ${CUSERHOME}
 
 USER $CUSER
+
+ADD ./.gitconfig ${CUSERHOME}
 WORKDIR  /home/$CUSER
 
 
