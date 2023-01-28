@@ -1,9 +1,8 @@
 FROM ubuntu:18.04
 
-ENV DEBIAN_FRONTEND noninteractive
-
 RUN apt-get update && \
-    apt-get install -y openjdk-8-jdk git ccache automake \
+    DEBIAN_FRONTEND=noninteractive \
+       apt-get install -y openjdk-8-jdk git ccache automake \
        lzop bison gperf build-essential zip curl \
        zlib1g-dev g++-multilib python3-networkx \
        libxml2-utils bzip2 libbz2-dev libbz2-1.0 \
