@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
-    apt-get install -y openjdk-8-jdk git ccache automake \
+    apt-get install -y wget openjdk-8-jdk git ccache automake \
        lzop bison gperf build-essential zip curl \
        zlib1g-dev g++-multilib python3-networkx \
        libxml2-utils bzip2 libbz2-dev libbz2-1.0 \
@@ -23,8 +23,20 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
     apt-get update && \
     apt-get -y install git-lfs
 
-RUN pip3 install meson==0.59.2
+RUN pip3 install meson==0.60.0
 RUN pip3 install mako==1.1.0
+RUN pip3 install dataclasses
+
+RUN apt-get install -y sudo --option=Dpkg::Options::=--force-confdef
+ADD ./sudoers /etc/sudoers
+
+WORKDIR /usr/local/
+
+RUN wget https://github.com/KhronosGroup/glslang/releases/download/SDK-candidate-26-Jul-2020/glslang-master-linux-Release.zip  && \
+    unzip glslang-master-linux-Release.zip bin/glslangValidator && \
+    rm glslang-master-linux-Release.zip
+
+WORKDIR /
 
 #creating user celadonuser
 ENV CUSER celadon
