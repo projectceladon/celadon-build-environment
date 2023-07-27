@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -14,7 +14,7 @@ RUN apt-get update && \
        python3-pystache git-lfs python3 flex clang libncurses5 \
        fakeroot ncurses-dev xz-utils cryptsetup-bin \
        apt-transport-https ca-certificates curl lsb-release \
-       rsync python-pystache python-mako vim python-six \
+       rsync vim python-six \
        software-properties-common cpio python3-pip ninja-build \
        cutils cmake pkg-config xorriso mtools libjson-c-dev
 
@@ -32,9 +32,7 @@ ADD ./sudoers /etc/sudoers
 
 WORKDIR /usr/local/
 
-RUN wget https://github.com/KhronosGroup/glslang/releases/download/SDK-candidate-26-Jul-2020/glslang-master-linux-Release.zip  && \
-    unzip glslang-master-linux-Release.zip bin/glslangValidator && \
-    rm glslang-master-linux-Release.zip
+RUN apt update &&  apt install -y glslang-tools
 
 WORKDIR /
 
