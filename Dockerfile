@@ -11,7 +11,7 @@ RUN apt-get update && \
        schedtool dpkg-dev liblz4-tool make optipng maven \
        libssl-dev bc bsdmainutils gettext python3-mako \
        libelf-dev sbsigntool dosfstools mtools efitools \
-       python3-pystache git-lfs python3 flex clang libncurses5 \
+       python3-pystache git-lfs python-is-python3 flex clang libncurses5 \
        fakeroot ncurses-dev xz-utils cryptsetup-bin \
        apt-transport-https ca-certificates curl lsb-release \
        rsync vim python-six \
@@ -44,10 +44,11 @@ ENV CGRP celadon
 RUN groupadd -g 9999 $CGRP && \
 useradd -m -d $CUSERHOME -g $CGRP  $CUSER
 
+ADD ./.gitconfig ${CUSERHOME}
+RUN chown celadon:celadon $CUSERHOME/.gitconfig
 
 USER $CUSER
 
-ADD ./.gitconfig ${CUSERHOME}
 WORKDIR  /home/$CUSER
 
 
