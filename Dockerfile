@@ -14,7 +14,7 @@ RUN apt-get update && \
        python3-pystache git-lfs python-is-python3 flex clang libncurses5 \
        fakeroot ncurses-dev xz-utils cryptsetup-bin \
        apt-transport-https ca-certificates curl lsb-release \
-       rsync vim python-six \
+       rsync vim python-six kmod\
        software-properties-common cpio python3-pip ninja-build \
        cutils cmake pkg-config xorriso mtools libjson-c-dev file
 
@@ -26,6 +26,8 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
 RUN pip3 install meson==0.60.0
 RUN pip3 install mako==1.1.0
 RUN pip3 install dataclasses
+RUN pip3 install pycryptodome
+RUN pip3 install ply==3.11
 
 RUN apt-get install -y sudo --option=Dpkg::Options::=--force-confdef
 ADD ./sudoers /etc/sudoers
