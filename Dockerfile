@@ -23,11 +23,21 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
     apt-get update && \
     apt-get -y install git-lfs
 
-RUN pip3 install meson==0.60.0
+
+RUN pip3 install meson==1.1.0
 RUN pip3 install mako==1.1.0
 RUN pip3 install dataclasses
 RUN pip3 install pycryptodome
 RUN pip3 install ply==3.11
+
+
+RUN dpkg --add-architecture i386
+RUN wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB  | gpg --dearmor | tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null && \
+    echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list  
+RUN  apt-get update && \
+    apt-get install -y intel-oneapi-ipp-devel-2021.10 \
+    intel-oneapi-mkl-devel-2021.1.1 intel-oneapi-ipp-devel-32bit-2021.10 intel-oneapi-mkl-devel-32bit-2021.1.1
+
 
 RUN apt-get install -y sudo --option=Dpkg::Options::=--force-confdef
 ADD ./sudoers /etc/sudoers
