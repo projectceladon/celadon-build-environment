@@ -16,7 +16,9 @@ RUN apt-get update && \
        apt-transport-https ca-certificates curl lsb-release \
        rsync vim python-six kmod\
        software-properties-common cpio python3-pip ninja-build \
-       cutils cmake pkg-config xorriso mtools libjson-c-dev file
+       cutils cmake pkg-config xorriso mtools libjson-c-dev file \
+       libxinerama-dev python3-pyelftools &&\
+       dpkg-reconfigure -p critical dash
 
 
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
