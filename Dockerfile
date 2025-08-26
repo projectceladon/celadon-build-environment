@@ -16,7 +16,7 @@ RUN apt-get update && \
        apt-transport-https ca-certificates curl lsb-release \
        rsync vim python-six kmod\
        software-properties-common cpio python3-pip ninja-build \
-       cutils cmake pkg-config xorriso mtools libjson-c-dev file \
+       cutils cmake pkg-config xorriso mtools libjson-c-dev file pigz \
        libxinerama-dev python3-pyelftools &&\
        dpkg-reconfigure -p critical dash
 
@@ -31,7 +31,6 @@ RUN pip3 install mako==1.1.0
 RUN pip3 install dataclasses
 RUN pip3 install pycryptodome
 RUN pip3 install ply==3.11
-
 
 RUN dpkg --add-architecture i386
 RUN wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB  | gpg --dearmor | tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null && \
